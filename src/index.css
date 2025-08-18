@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles pour l'application Fimela */
+
+/* Amélioration des ombres pour les textes */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Transitions fluides pour tous les éléments interactifs */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Styles pour les scrollbars (webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
+}
+
+/* Styles pour les focus accessibles */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: 2px solid #0a8734;
+  outline-offset: 2px;
+}
+
+/* Animation subtile pour les cartes au hover */
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.hover-bounce:hover {
+  animation: subtle-bounce 0.6s ease-in-out;
+}
+
+/* Styles pour les liens avec couleurs thématiques */
+.link-primary {
+  @apply text-[#0a8734] hover:text-[#0a8734]/80;
+}
+
+.link-secondary {
+  @apply text-[#5383a9] hover:text-[#5383a9]/80;
+}
+
+/* Gradient personnalisé pour les backgrounds */
+.bg-fimela-gradient {
+  background: linear-gradient(135deg, #3e2a1a 0%, #856f53 50%, #d3a277 100%);
+}
+
+.bg-nature-gradient {
+  background: linear-gradient(135deg, #0a8734 0%, #5383a9 100%);
+}
+
+/* Animation pour le slider */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-fade-in {
+  animation: fadeInSlide 0.8s ease-out;
+}
+
+/* Styles pour les indicateurs de statut */
+.status-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.status-success {
+  @apply bg-[#0a8734] text-white;
+}
+
+.status-warning {
+  @apply bg-yellow-500 text-white;
+}
+
+.status-info {
+  @apply bg-[#5383a9] text-white;
+}
+
+.status-secondary {
+  @apply bg-[#856f53] text-white;
+}
+
+/* Amélioration de la lisibilité */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Styles pour les sections principales */
+.section-padding {
+  @apply py-16 lg:py-20;
+}
+
+.container-custom {
+  @apply container mx-auto px-4 lg:px-8;
+}
+
+/* Animation pour les éléments qui apparaissent */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Styles pour les tableaux responsifs */
+.table-responsive {
+  @apply min-w-full overflow-x-auto;
+}
+
+.table-responsive table {
+  @apply w-full border-collapse;
+}
+
+.table-responsive th,
+.table-responsive td {
+  @apply px-4 py-3 text-left border-b border-gray-200;
+}
+
+.table-responsive th {
+  @apply bg-gray-50 font-semibold text-[#3e2a1a];
+}
+
+/* Styles pour les formulaires */
+.form-input {
+  @apply w-full p-3 border border-gray-300 rounded-lg focus:border-[#0a8734] focus:ring-2 focus:ring-[#0a8734]/20 transition-all;
+}
+
+.form-label {
+  @apply block text-sm font-semibold text-[#3e2a1a] mb-2;
+}
+
+.form-button {
+  @apply bg-[#0a8734] text-white px-6 py-3 rounded-lg hover:bg-[#0a8734]/90 transition-colors font-semibold;
+}
+
+/* Styles pour les modales et overlays */
+.modal-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50;
+}
+
+.modal-content {
+  @apply bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-screen overflow-y-auto;
+}
+
+/* Styles pour les notifications/alertes */
+.alert {
+  @apply px-4 py-3 rounded-lg border;
+}
+
+.alert-success {
+  @apply bg-green-50 border-green-200 text-green-800;
+}
+
+.alert-warning {
+  @apply bg-yellow-50 border-yellow-200 text-yellow-800;
+}
+
+.alert-error {
+  @apply bg-red-50 border-red-200 text-red-800;
+}
+
+.alert-info {
+  @apply bg-blue-50 border-blue-200 text-blue-800;
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Styles pour l'impression */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break {
+    page-break-after: always;
+  }
+  
+  .print-avoid-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Styles pour les écrans haute résolution */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .high-res-border {
+    border-width: 0.5px;
+  }
+}
