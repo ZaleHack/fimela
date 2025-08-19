@@ -48,7 +48,7 @@ function App() {
       <main>
         {renderActiveSection()}
       </main>
-      <Footer />
+      <Footer setActiveSection={setActiveSection} />
     </div>
   );
 }

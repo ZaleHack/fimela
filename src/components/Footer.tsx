@@ -1,13 +1,17 @@
 import React from 'react';
 import { Facebook, Twitter, Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  setActiveSection: (section: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ setActiveSection }) => {
   const quickLinks = [
-    { name: 'État Civil', href: '#' },
-    { name: 'Urbanisme', href: '#' },
-    { name: 'Marchés Publics', href: '#' },
-    { name: 'Bourses Scolaires', href: '#' },
-    { name: 'Signaler un Problème', href: '#' }
+    { name: 'État Civil', section: 'demarches' },
+    { name: 'Urbanisme', section: 'demarches' },
+    { name: 'Marchés Publics', section: 'transparence' },
+    { name: 'Action Sociale', section: 'vie-locale' },
+    { name: 'Contact', section: 'contact' }
   ];
 
   const institutionnels = [
@@ -61,13 +65,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href}
+                  <button 
+                    onClick={() => setActiveSection(link.section)}
                     className="text-gray-300 hover:text-[#0a8734] transition-colors text-sm flex items-center gap-2"
                   >
                     <div className="w-1.5 h-1.5 bg-[#0a8734] rounded-full"></div>
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
